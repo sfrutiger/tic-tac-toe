@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+    --cell-color: aqua;
+    --background: rgb(30, 30, 60);
+    --message-color: rgb(170, 170, 170);
+}
+
+body {
+    margin: 0;
+}
+
+.board {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--background);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+    background-color: var(--cell-color);
+    border: 2px solid var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell.x,
+.cell.o {
+    cursor: default;
+}
+
+/* create marks */
+.cell.x::before,
+.cell.x::after {
+    position: absolute;
+    content: '';
+    height: 90px;
+    width: 20px;
+    background-color: var(--background);
+}
+
+.cell.x::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+.cell.o::before {
+    position: absolute;
+    content: '';
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    background-color: var(--background);
+}
+
+.cell.o::after {
+    position: absolute;
+    content: '';
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: var(--cell-color);
+}
+
+.end-message{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: var(--message-color);
+    background-color: rgba(0, 0, 0, 0.85);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.end-message h1 {
+    font-size: 40px;
+    margin: 5px;
+}
+
+#replay-button {
+    width: 100px;
+    height: 30px;
+    font-size: 1em;
+    color: var(--background);
+    background-color: var(--message-color);
+    border: none;
+    border-radius: 3px;
+}
